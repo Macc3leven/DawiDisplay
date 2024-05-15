@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./css/specimen.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+    <link rel="stylesheet" href="./css/nav.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <title>Specimen #000</title>
+  <style>
+    #doc_type,
+    #doc_data{
+      display: none;
+    }
+  </style>
+  <body>
+    <p id="doc_type">specimen</p>
+    <p id="doc_data">{
+      "SID": 102,
+      "name": "Mighty Bird",
+      "description": "In the ancient depths of the Shadawi Universe, there exists a celestial avian known as the Mighty Bird. Born into the revered Chinon family, guardians of cosmic balance and wielders of ancient energy, the Mighty Bird possesses a beak imbued with the power to consume, store, and disburse cosmic energies",
+      "totalForms": 1,
+      "population": 8,
+      "owned": 0,
+      "build": "evo",
+      "family": "Chinon",
+      "purgLvl": "mighty",
+      "creator": "Oneiric",
+      "knownAbilities": "Wing Slap, Nest Cannon",
+      "forms": [
+        {
+          "name": "Mighty Bird",
+          "size": "humanoid",
+          "class": "divine",
+          "skill": "mystical",
+          "health": 6705,
+          "damage": 1201,
+          "defense": 400,
+          "time": 8,
+          "owned": 0,
+          "form": 1,
+          "build": "evo",
+          "purgLvl": "mighty",
+          "stun": 447,
+          "agility": 277,
+          "power": 907
+        }
+      ],
+      "locations": {
+        "assetsDirectory": "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG",
+        "mainDirectory": ""
+      },
+      "class": "divine",
+      "skill": "mystical",
+      "abilities": [
+        {
+          "form": "*",
+          "skin": "*",
+          "type": "strike",
+          "skill": "martial arts",
+          "name": "Wing Slap",
+          "dataname": "wingslap",
+          "description": "A furious wing attack",
+          "mods": { "dam": 1.4, "power": 2 },
+          "requiredPoints": 0
+        },
+        {
+          "form": "*",
+          "skin": "*",
+          "type": "ultStrike",
+          "skill": "mystical",
+          "name": "Nest Cannon",
+          "dataname": "nestcannon",
+          "description": "A blast of high kinetic energy, made of charged particles",
+          "requiredPoints": 300,
+          "mods": { "dam": 2.1, "stun": 4 }
+        }
+      ],
+      "files": [
+        {
+          "filename": "mugshot_1000.png",
+          "fileType": "png",
+          "content": "mugshot",
+          "form": 1,
+          "skin": 1,
+          "link": "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/mugshot_1000.png"
+        },
+        {
+          "filename": "mugshot_2000.png",
+          "fileType": "png",
+          "content": "mugshot",
+          "form": 2,
+          "skin": 1,
+          "link": "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/mugshot_2000.png"
+        },
+        {
+          "filename": "prefab_1000.glb",
+          "fileType": "glb",
+          "content": "prefab",
+          "form": 1,
+          "skin": 1,
+          "link": "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_1000.glb"
+        },
+        {
+          "filename": "prefab_2000.glb",
+          "fileType": "glb",
+          "content": "prefab",
+          "form": 2,
+          "skin": 1,
+          "link": "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_2000.glb"
+        },
+        {
+          "name": "dark-plane",
+          "fileType": "terrain",
+          "filename": null,
+          "jsonSrc": "QmP74foPLQERLTtz2B3h3qM3Ves4qM6prWVwSLsK7aSaQq"
+        }
+      ]
+    }
+    </p>
+    <!-- Sidebar -->
+    <!-- This sidebar opens from the side if desktop is greater that 600px width, and opens from the bottom 
+        on devices less that 600px width, the X is supposed to stay beside the sidebar at all times, and on 
+        mobile stay above it, -->
+
+    <div class="nav-container">
+      <a href="https://macc3leven.github.io/dawiHomePage/public/gallery.html"><img src="./images/gallery.png" alt="">Gallery</a>
+    </div>
+
+    <div id="loader">
+      <img src="./images/loader.gif" alt="" />
+      <p id="loaderTxt"></p>
+    </div>
+
+    <a
+      id="toggleBarBtn"
+      href="javascript:void(0)"
+      class="close-btn"
+      onclick="toggleSidebar()"
+      >X</a
+    >
+
+    <!-- Page Content -->
+    <div class="content" id="main-content"></div>
+
+    <div class="sidebar" id="mySidebar">
+      <div class="title-section">
+        <img id="mugshotImg" src=" " alt="" />
+        <div class="title-info">
+          <div class="title-details row">
+            <h1 id="nameTxt"></h1>
+          </div>
+
+          <div class="title-details">
+            <h4 id="formTxt">Form: 1 of 1</h4>
+            <h4 id="sidTxt">SID: #101</h4>
+          </div>
+        </div>
+      </div>
+      <br />
+      
+      <div class="info_sections">
+        <div class="info_title" style="text-align: center">Description</div>
+        <div class="info_content" style="text-align: center">
+          <p id="descriptionTxt">Description...</p>
+        </div>
+      </div>
+      <br />
+      
+      <div class="info_sections">
+        <div class="info_title">Attributes</div>
+        <div class="info_content wrap">
+          <div class="attrib row">
+            <h3>Class</h3>
+            <p id="classTxt">class</p>
+          </div>
+          <div class="attrib row">
+            <h3>Skill</h3>
+            <p id="skillTxt">skill</p>
+          </div>
+          <div class="attrib row">
+            <h3>Build</h3>
+            <p id="buildTxt">build</p>
+          </div>
+          <div class="attrib row">
+            <h3>Purg Lvl</h3>
+            <p id="purgLvlTxt">purglvl</p>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="info_sections">
+        <div class="info_title">Stats</div>
+        <div class="info_content wrap">
+          <div class="stat row">
+            <h3>ATTACK</h3>
+            <p id="damageTxt">100</p>
+          </div>
+          <div class="stat row">
+            <h3>DEFENCE</h3>
+            <p id="defenseTxt">100</p>
+          </div>
+          <div class="stat row">
+            <h3>CYCLE TIME</h3>
+            <p id="timeTxt">100</p>
+          </div>
+          <div class="stat row">
+            <h3>STUN</h3>
+            <p id="stunTxt">100</p>
+          </div>
+          <div class="stat row">
+            <h3>AGILITY</h3>
+            <p id="agilityTxt">100</p>
+          </div>
+          <div class="stat row">
+            <h3>POWER</h3>
+            <p id="powerTxt">100</p>
+          </div>
+        </div>
+      </div>
+      <br />
+      
+      <div class="info_sections">
+        <div class="info_title">Abilities</div>
+        <div id="abilityCont" class="info_content wrap">
+          <!-- Populate with js  -->
+        </div>
+      </div>
+      <br>
+
+      <!-- Switch form module -->
+      <div class="info_sections" id="formDiv">
+        <div class="info_content row">
+          <div id="formBack"><img src="./images/leftPg.png" alt="back" /></div>
+          <p id="formTxt"></p>
+          <div id="formNext"><img src="./images/rightPg.png" alt="next" /></div>
+        </div>
+        <br />
+      </div>
+      
+
+      <br />
+      <div class="social-section">
+        <div class="info_title">Follow Our Project</div>
+        <div class="social-content row">
+          <a href="https://www.facebook.com/LegendsOfShadawi/"
+            ><img src="./images/facebook.png" alt="" />
+          </a>
+          <a href="https://twitter.com/shadawi_nft"
+            ><img src="./images/x.png" alt="" />
+          </a>
+          <a href="https://www.instagram.com/shadawi_nft/"
+            ><img src="./images/instagram.png" alt="" />
+          </a>
+          <a href="https://discord.gg/nb9GFfPnnW"
+            ><img src="./images/discord.png" alt="" />
+          </a>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <!-- IMPORT MAP -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://threejs.org/build/three.module.js",
+          "three/addons/": "https://threejs.org/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- JAVASCRIPT DOM -->
+    <script type="module" src="./js/specimen.js"></script>
+    <!-- <script type="module" src="./js/gui.js"></script> -->
+  </body>
+</html>
