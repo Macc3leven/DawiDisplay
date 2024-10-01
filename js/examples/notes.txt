@@ -1,0 +1,4 @@
+
+// Abilities
+Movement Speed: when using ability whats the drag Speed
+Style types: abilities can be stk-a, stk-b, stk-c, and abilities must match the style type in order to be equipted.

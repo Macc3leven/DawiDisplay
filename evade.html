@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      #whem {
+        background-color: rgba(0, 255, 255, 0.36);
+        width: 100%;
+        height: 50vh;
+      }
+    </style>
+    <p id="whem">hello</p>
+
+    <script>
+      const monster = {
+        stamina: 2890, // Total Stamina Points dodging and skill use
+        endurance: 500, // The speed that defense and stamina refill
+        agility: 500, // controls the cost of evades to some degree
+        weight: 201, // controls the cost of evades to some degree
+        stamina_regain: null,
+      };
+
+      var currentStamina = monster.stamina;
+
+      function printValue(value = "", mvalue = "") {
+        document.getElementById("whem").textContent = value;
+      } printValue(`EvadeCost: ${0} \n\n StaminaLeft: ${currentStamina}`);
+
+      function evadeCost() {
+        const { stamina, endurance, agility, weight } = monster;
+        return (weight * stamina) / (agility * 10);
+      }
+
+      function _calculateRegainTime(endurance) {
+        // For simplicity, let's assume the time ranges from 1 second (high endurance) to 10 seconds (low endurance)
+        const minTime = 1; // 1 second
+        const maxTime = 10; // 10 seconds
+        return maxTime - (endurance / 100) * (maxTime - minTime);
+      } console.log(_calculateRegainTime(monster.endurance));
+
+      let interval = null;
+      function regainStamina() {
+        const maxStamina = monster.stamina;
+        
+        const regainTime = calculateRegainTime(endurance);
+        const regainRate = maxStamina / regainTime; // Stamina per second
+        monster.stamina_regain = setInterval(function () {
+          currentStamina += regainRate;
+          if (currentStamina >= maxStamina) {
+            currentStamina = maxStamina;
+            clearInterval(interval);
+          }
+          console.log("Current Stamina:", currentStamina.toFixed(2));
+        }, 1000); // Update every second
+      }
+
+      document.addEventListener("keydown", function (event) {
+        // console.log(event.key)
+        switch (event.key) {
+          case "ArrowUp": // left
+            monster.weight += 25;
+            break;
+          case "ArrowDown": // right
+            monster.weight -= 25;
+            break;
+          case " ": // forward
+            const cost = evadeCost();
+            currentStamina -= cost;
+            currentStamina = Math.floor(currentStamina);
+            console.log(monster);
+            printValue(
+              `EvadeConst: ${cost} \n\n StaminaLeft: ${currentStamina}`
+            );
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

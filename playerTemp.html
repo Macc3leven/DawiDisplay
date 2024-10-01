@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Dashboard</title>
+</head>
+<style>
+    
+    body {
+        margin: 0; /* Removes default margin */
+        padding: 0; /* Removes default padding */
+        box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+        font-family: Arial, sans-serif; /* Sets a default font for the document */
+        background-color: #f0f0f0; /* Sets a light gray background color */
+        color: #333; /* Sets a default text color */
+        line-height: 1.6; /* Sets a comfortable line height for text */
+    }
+    .freeBox{
+        position: absolute;
+        background-color: aqua;
+        /* margin: 20px 40px; */
+        bottom: 10px;
+        left: 10px;
+
+        width: 40%;
+        min-width: 100px;
+        height: 450px;
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .freebox_content{
+        /* display: grid;
+        grid-template-rows: repeat(2, 1fr) 150px; */
+    }
+</style>
+<body>
+    
+    <!-- Sidebar -->
+    <div class="sidepanel">
+
+    </div>
+
+    <div class="freeBox">
+        <div class="freebox_content">1</div>
+        <div class="freebox_content">2</div>
+        <div class="freebox_content">3</div>
+    </div>
+
+</body>
+</html>

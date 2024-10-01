@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./css/specimen.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+    <link rel="stylesheet" href="./css/nav.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <title>{%TITLE%}</title>
+  <style>
+    #inf {
+      display: none;
+    }
+
+  
+
+    .formBtn {
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(80deg, #1a1a1a, rgba(255, 255, 255, 0.195));
+      padding: 10px 2px;
+    }
+  </style>
+  <body>
+    <div id="inf">
+      <p id="assetContext">{%ASSET_CONTEXT%}</p>
+      <p id="docJsonTxt">{%TOKEN_JSON%}</p>
+    </div>
+
+    <!-- Sidebar -->
+    <!-- This sidebar opens from the side if desktop is greater that 600px width, and opens from the bottom 
+        on devices less that 600px width, the X is supposed to stay beside the sidebar at all times, and on 
+        mobile stay above it, -->
+
+    <div class="nav-container">
+      <a href="https://macc3leven.github.io/dawiHomePage/public/gallery.html"
+        ><img src="./images/gallery.png" alt="" />Gallery</a
+      >
+    </div>
+
+    <div id="loader">
+      <img src="./images/loader.gif" alt="" />
+      <p id="loaderTxt"></p>
+    </div>
+
+    <a id="toggleBarBtn" href="javascript:void(0)" class="close-btn">X</a>
+
+    <!-- Page Content -->
+    <div class="content" id="main-content"></div>
+
+    <div class="sidebar" id="mySidebar">
+      <div class="title-section">
+        <img id="mugshotImg" src=" " alt="" />
+        <div class="title-info">
+          <div class="title-details row">
+            <h1 id="nameTxt"></h1>
+          </div>
+
+          <div class="title-details">
+            <h4 id="formTxt">Form: 1 of 1</h4>
+            <h4 id="sidTxt">SID: #101</h4>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="info_sections">
+        <div class="info_title" style="text-align: center">Description</div>
+        <div class="info_content" style="text-align: center">
+          <p id="descriptionTxt">Description...</p>
+        </div>
+      </div>
+      <br />
+
+      <div class="info_sections">
+        <div class="info_title">Attributes</div>
+        <div id="attrib_content" class="info_content wrap">
+          <!-- Populate with js -->
+        </div>
+      </div>
+
+      <br />
+      <div class="info_sections">
+        <div class="info_title">Stats</div>
+        <div id="stat_content" class="info_content wrap">
+          <!-- Populate with js -->
+        </div>
+      </div>
+      <br />
+
+      <div class="info_sections">
+        <div class="info_title">Abilities</div>
+        <div id="ability_content" class="info_content wrap">
+          <!-- Populate with js  -->
+        </div>
+      </div>
+      <br />
+
+      <br />
+      <div class="social-section">
+        <div class="info_title">Follow Our Project</div>
+        <div class="social-content row">
+          <a href="https://www.facebook.com/LegendsOfShadawi/"
+            ><img src="./images/facebook.png" alt="" />
+          </a>
+          <a href="https://twitter.com/shadawi_nft"
+            ><img src="./images/x.png" alt="" />
+          </a>
+          <a href="https://www.instagram.com/shadawi_nft/"
+            ><img src="./images/instagram.png" alt="" />
+          </a>
+          <a href="https://discord.gg/nb9GFfPnnW"
+            ><img src="./images/discord.png" alt="" />
+          </a>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <!-- IMPORT MAP -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://threejs.org/build/three.module.js",
+          "three/addons/": "https://threejs.org/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- JAVASCRIPT DOM -->
+    <script type="module" src="./js/initToken.js"></script>
+  </body>
+</html>
