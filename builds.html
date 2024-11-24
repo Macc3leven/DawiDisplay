@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./css/specimen.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+    <link rel="stylesheet" href="./css/nav.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet" />
+</head>
+<title>Glass Material</title>
+<style>
+</style>
+
+<body>
+
+    <!-- IMPORT MAP -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://threejs.org/build/three.module.js",
+          "three/addons/": "https://threejs.org/examples/jsm/"
+        }
+      }
+    </script>
+    <style>
+        null {
+            background-color: #b88a87;
+        }
+    </style>
+
+    <script type="module">
+        // import * as THREE from 'three';
+        import * as THREE from "three";
+
+        // Create the scene, camera, and renderer as usual
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create a cube geometry
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+
+        // Set up the glass material with MeshPhysicalMaterial
+        const glassMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,                // Base color of the glass
+            metalness: 0,                   // Low metalness for a non-metallic look
+            roughness: 0.05,                // Low roughness to make it shiny and reflective
+            transmission: 0.9,              // High transmission for glass-like transparency
+            opacity: 0.5,                   // Adjust opacity to make it semi-transparent
+            transparent: true,              // Enable transparency
+            ior: 1.5,                       // Index of refraction (similar to glass)
+            reflectivity: 0.9,              // High reflectivity for reflective look
+            clearcoat: 1.0,                 // Optional: adds a shiny layer on top
+            clearcoatRoughness: 0           // Clear coat roughness for smooth reflections
+        });
+
+        // Setup Text material
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = 256;
+        canvas.height = 256;
+
+        context.fillStyle = 'rgba(0, 0, 0, 0)'; // Transparent background
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = '#ffffff';          // Text color (white for visibility on glass)
+        context.font = '30px Arial';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText('Hello, Cube!', canvas.width / 2, canvas.height / 2);
+        const textTexture = new THREE.CanvasTexture(canvas);
+        const textMaterial = new THREE.MeshBasicMaterial({
+            map: textTexture,
+            transparent: true
+        });
+
+        // Apply the material to the mesh
+        const cube = new THREE.Mesh(geometry, glassMaterial);
+        const cube2 = new THREE.Mesh(geometry, glassMaterial);
+        cube2.position.z = -4;
+        scene.add(cube);
+        scene.add(cube2);
+
+
+        // Position the camera and add lighting
+        camera.position.z = 5;
+        const light = new THREE.AmbientLight("#b88a87", 10); //new THREE.PointLight(0xffffff, 10, 100);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+
+</html>
