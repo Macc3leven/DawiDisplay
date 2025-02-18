@@ -1,0 +1,16 @@
+INDEX.HTML
+
+SEARCH SCENE;
+handles search queries of shadawi specimen from the current url 
+http://shadawi.com/display/{specimenIdentifier}. Will provide a modal if no 
+query is found. 
+The searchModal is a modal box, with 40px padding
+using one horazontal div flexbox holding a filter with the inputs (name,sid,url) and input field
+for the data. the whole scene should have
+-showSearchModal
+-checkQuery
+-checkQueryMemory -> only use put as suggested in modal
+
+DISPLAY SCENE;
+show only if proper scecimen has been identified
+and present in specimenDataClass

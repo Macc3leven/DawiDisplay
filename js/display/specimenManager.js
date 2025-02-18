@@ -1,16 +1,16 @@
 import ThreeMemory from "../threeEngine2/prototypes/ThreeMemory.js";
 import * as scene from "../threeEngine2/modules/scene.js";
-// import * as camera from "../threeEngine2/modules/camera.js";
 import * as terrain from "../threeEngine2/modules/terrains.js";
 import * as characters from "../threeEngine2/modules/characters.js";
-// import * as Gui from "../gui.js";
-import * as Tools from "../utils/tools.js";
-// import * as strings from "../utils/strings.js";
 
 import exampleTerrain from "../utils/exampleTerrain.js";
 import exampleSpecimen from "../utils/exampleSpecimen.js";
-// import addKeyboardControl from "../utils/keyboard.js";
 
+// import * as camera from "../threeEngine2/modules/camera.js";
+// import * as Tools from "../utils/tools.js";
+// import * as Gui from "../gui.js";
+// import * as strings from "../utils/strings.js";
+// import addKeyboardControl from "../utils/keyboard.js";
 
 //----set up the specimen scene----//
 const memory = new ThreeMemory();
@@ -18,7 +18,6 @@ const gtwy = "https://beige-worthwhile-hornet-694.mypinata.cloud/ipfs/";
 const specimenJson = exampleSpecimen;
 
 document.addEventListener("DOMContentLoaded", async () => {
-
   // scene
   scene.initScene(memory);
 
@@ -45,18 +44,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   //   memory.ClientCamera.lockBehindCharacter(newCharacter, 2000);
   // }, 2000);
 
-
-
-
-
-
-
-
-
-
-
-
-
+  document.addEventListener("keydown", function (event) {
+    // console.log(event.key)
+    switch (event.key) {
+      case "v": // left
+        newCharacter.prj();
+        console.log("PROJECTING");
+        break;
+      case "c": // right
+        newCharacter.stk();
+        console.log("STRIKING");
+        break;
+    }
+  });
 
   // // add character
   // const specDataName = Tools.crunchCase(specimenJson.name);

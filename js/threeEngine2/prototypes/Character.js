@@ -29,13 +29,13 @@ class Character {
 
   // loaders
   async loadModel(glbObject={}) {
-    console.log("my", glbObject);
+    // console.log("my", glbObject);
     hasProperties(glbObject, "basemodel");
     verifySrc(glbObject);
     const loader = new GLTFLoader();
-    console.log('fetching base model...')
+    console.log('fetching base model...');
 
-    // load basemodel
+    // load basemodel //"./models/cloud-ogre-browser.glb"
     const basemodelSRC = glbObject["basemodel"];
     const basemodelGLTF = await loader.loadAsync(basemodelSRC);
 
@@ -61,9 +61,11 @@ class Character {
           this.baseActions[key] = this.mixer.clipAction(animation);
         } else {
           console.error(
-            `Corrupt GLB: ${this.dataname} has an error within animation "${key}"`
+            `CorruptGLB: ${this.dataname} has an error within animation "${key}"`
           );
         }
+
+        console.log("BaseActions", this.baseActions)
       }
     }
 
@@ -129,8 +131,8 @@ class Character {
     actions.playAnimation(this, "idle");
   }
 
-  stk(name) {
-    //playAbility(stk, )
+  stk() {
+    actions.playAnimation(this, "stk");
   }
 
   prj() {

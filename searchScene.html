@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadawi Search Scene</title>
+    <link rel="stylesheet" href="/css/searchModal.css">
+</head>
+<body>
+
+    <div id="modalContainer">
+        <div id="searchModal">
+        <h2>SEARCH FOR SPECIMEN</h2>
+
+            <div class="filter">
+                <select id="filterType">
+                    <option value="name">Name</option>
+                    <option value="sid">SID</option>
+                    <option value="url">URL</option>
+                </select>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="filterValue" placeholder="Enter query...">
+                <button onclick="checkQuery()">Search</button>
+            </div>
+        </div>
+
+        <div id="searchModalError">
+            <h2 id="ErrorTitle">Error</h2>
+            <p id="ErrorTxt">No results found for your query.</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import * as queryMem from './js/utils/queryMemory.js'
+
+        function onStart(){
+            // does have cookie and specimenForm in memory?
+                // load the displayScene
+
+            // does have specimenForm in memory?
+                // if so suggest it in search
+                // load the display
+
+            // does have url query: example localhost/display/#sid-123?
+                // apply query cookie
+                // if so download specimenForm into memory
+                // load the display
+                // remove query cookie
+        }
+
+        function showSearchModal() {
+            document.getElementById('modalContainer').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function hideSearchModal() {
+            document.getElementById('modalContainer').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function initDisplayScene(){
+            hideSearchModal();
+            // loads the data from specimenFormMemory
+        }
+
+        function checkQuery() {
+            const filterType = document.getElementById('filterType').value;
+            const filterValueEl = document.getElementById('filterValue');
+            const filterValue = filterValueEl.value.trim();
+            filterValueEl.placeholder = `Enter ${filterType}...`;
+
+            if (!filterValue) { // show error modal
+                const errorModal = document.getElementById('searchModalError');
+                errorModal.style.display = 'block';
+                return;
+            }
+
+            // testing
+            const queryURL = `${window.location.origin}${window.location.pathname}#${filterValue}`;
+            window.alert(`Redirecting to: ${queryURL}`);
+            window.location.href = queryURL;
+        }
+
+        window.checkQuery = checkQuery;
+    </script>
+</body>
+</html>

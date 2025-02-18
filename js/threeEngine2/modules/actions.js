@@ -1,9 +1,8 @@
 import { THREE } from "../threeWrapper.js";
 
 // Function to play an animation
-export function playAnimation(prefab, animationName) {
-    const action = prefab.baseActions[animationName];
-    console.log({action});
+export function playAnimation(model, animationName) {
+    const action = model.baseActions[animationName];
 
     if (action) {
         action.reset();
@@ -12,8 +11,8 @@ export function playAnimation(prefab, animationName) {
     }else console.log(`no such animation ${animationName}`)
 }
 
-export function repeatAnimation(prefab, animationName, repeatCount = 1) {
-    const action = prefab.baseActions[animationName];
+export function repeatAnimation(model, animationName, repeatCount = 1) {
+    const action = model.baseActions[animationName];
     if (action) {
         action.reset();
         action.repetitions = repeatCount; // Set the number of repetitions
@@ -26,17 +25,17 @@ export function repeatAnimation(prefab, animationName, repeatCount = 1) {
 }
 
 // Function to stop an animation
-export function stopAnimation(prefab, animationName) {
-    const action = prefab.baseActions[animationName];
+export function stopAnimation(model, animationName) {
+    const action = model.baseActions[animationName];
     if (action) {
         action.stop();
     }else console.log(`no such animation ${animationName}`)
 }
 
 // Function to crossfade between two animations
-export function crossfadeAnimations(prefab, fromAnimation, toAnimation, duration = 1.0) {
-    const fromAction = prefab.baseActions[fromAnimation];
-    const toAction = prefab.baseActions[toAnimation];
+export function crossfadeAnimations(model, fromAnimation, toAnimation, duration = 1.0) {
+    const fromAction = model.baseActions[fromAnimation];
+    const toAction = model.baseActions[toAnimation];
 
     if (fromAction && toAction) {
         fromAction.fadeOut(duration);
@@ -44,9 +43,11 @@ export function crossfadeAnimations(prefab, fromAnimation, toAnimation, duration
     }
 }
 
-// Update the mixer for the prefab (should be called in your animation loop)
-export function updateMixer(prefab, delta) {
-    if (prefab.mixer) {
-        prefab.mixer.update(delta);
+// Update the mixer for the model (should be called in your animation loop)
+export function updateMixer(model, delta) {
+    if (model.mixer) {
+        model.mixer.update(delta);
     }
 }
+
+//Jump, Run
